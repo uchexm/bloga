@@ -11,7 +11,6 @@
 - [📗 Table of Contents](#-table-of-contents)
 - [📖Rails Blog App](#rails-blog-app)
   - [Key Features ](#key-features-)
-  - [🚀 live-demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [SetUp](#setup)
@@ -19,7 +18,7 @@
     - [Dependencies](#dependencies)
     - [Usage](#usage)
     - [Run tests](#run-tests)
-  - [👥 Authors ](#-authors-)
+  - [👥 Author ](#-author-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
@@ -70,7 +69,7 @@ Clone this Repository to your desired folder:
 
 ```sh
 cd my-folder
-git clone git@github.com:jugosack/blog-app-rails.git
+git clone git@github.com:uchexm/bloga.git
 ```
 
 ### Install
@@ -117,15 +116,15 @@ Run tests with:
     rspec
 ```
 
-## 👥 Authors <a name="authors"></a>
+## 👥 Author <a name="authors"></a>
 
-👤 **Jugoslav Achkoski**
+- -👤 **Uchechi Nwaka**
 
-- GitHub: [@github](https://github.com/jugosack)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/jugoslavachkoski/)
-- Twitter: [twitter](https://twitter.com/Jugoslav_A)
-- Facebook: [facebook](https://www.facebook.com/jugoslav.ackoski/)
+- -- GitHub: [@uchexm](https://github.com/uchexm)
 
+  -- LinkedIn: [@nwakauc](https://www.linkedin.com/in/nwakauc/)
+
+  -- Twiter [@nwakauc](https://twitter.com/Nwakauc)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
