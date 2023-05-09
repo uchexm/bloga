@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1 or /posts/1.json
-  def show 
+  def show
     @post = Post.find(params[:post_id])
   end
 
