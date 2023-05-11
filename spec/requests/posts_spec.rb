@@ -1,5 +1,8 @@
 require 'rails_helper'
 
+RSpec.describe 'Posts controller:', type: :request do
+  
+  
 describe 'GET all posts for an user' do
   let(:user) { User.create!(name: 'Test User', post_count: 0) }
 
@@ -23,4 +26,5 @@ describe 'GET specific post for a user' do
     expect(response.body).to include('<h1>This is a single post</h1>')
     expect(response).to render_template(:show)
   end
+end
 end
