@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   validates :likes_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def count_updater
-    user.posts_counter = Post.where(author_id:).count
+    user.posts_counter = Post.where(author_id: user.id).count
     user.save
   end
 
