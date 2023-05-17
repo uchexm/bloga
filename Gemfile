@@ -1,7 +1,4 @@
 source 'https://rubygems.org'
-gem 'rubocop', '>= 1.0', '< 2.0'
-
-source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.1'
@@ -12,7 +9,7 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
-# Use postgresql as the database for Active Record
+# Use sqlite3 as the database for Active Record
 gem 'pg', '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -52,10 +49,8 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem 'rspec-rails'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -75,3 +70,10 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem 'devise'
+gem 'pry'
+gem 'pry-byebug'
+gem 'rails-controller-testing'
+gem 'rspec-rails', '~> 4.0.0.beta2'
+gem 'rubocop', '>= 1.0', '< 2.0'
