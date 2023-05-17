@@ -5,7 +5,7 @@ class Comment < ApplicationRecord
 
   def count_updater
     post = Post.find_by(id: post_id)
-    post.comments_counter = Comment.where(post_id:).count
+    post.comments_counter = Comment.where(post_id: post.id).count
     post.save
   end
 end
