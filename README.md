@@ -129,7 +129,6 @@ Run tests with:
   👤 **Tekhlay**
 
 - GitHub: [@Tekhlay](https://github.com/Tekhlay)
-- Twitter: [@Tekhlay](https://twitter.com/Tekhlayb12)
 - LinkedIn: [Tekhlay](https://linkedin.com/in/tekhlay)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
