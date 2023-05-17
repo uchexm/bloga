@@ -1,153 +1,139 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 
-a {
-  text-decoration: none;
-  color: #023047;
+h1 {
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+.home-button {
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+  left: 47%;
 }
 
 body {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.ul-box {
-  width: 80%;
-  padding: 20px 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-  margin-bottom: 2rem;
-  background-color: #8ecae6;
-}
-
-.user-details {
-  display: flex;
-  column-gap: 20px;
-  padding: 20px 20px;
-}
-
-.user-details:nth-child(even) {
-  background-color: #8ecae6;
-}
-
-.image-box {
-  height: 100px;
-  width: 100px;
-  background: #219ebc;
-}
-
-.user-image {
-  height: 100%;
-}
-
-.info-box {
-  width: 70%;
-  border: 2px solid #023047;
-  padding: 10px;
-}
-
-.info-box p {
-  margin-top: 20px;
-  float: right;
-}
-
-.li-box {
-  padding: 0 20px;
-}
-
-.inner-li-box {
-  border: 2px solid #023047;
-  padding: 10px 20px;
-}
-
-.posts-box {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-  margin: 10px 0;
-}
-
-.button_div {
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 50%;
+}
+
+.app-cont {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 20px;
 }
 
-.button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #219ebc;
-  color: #fff;
-  border-radius: 10px;
-  cursor: pointer;
+.user-container {
+  justify-content: center;
+  display: flex;
+  flex-grow: 1;
+  margin-bottom: 30px;
+  gap: 30px;
 }
 
-.p_tags {
-  margin-top: 10px;
+.user-info {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  padding: 0 30px;
+  gap: 30px;
 }
 
-.inner-li-box a {
+.number-of-posts {
+  margin-top: 40px;
+}
+
+.user-bio-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+}
+
+.user-bio-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 5px;
+  gap: 30px;
+}
+
+.user-bio-info h3 {
+  margin: 0;
+}
+
+.user-bio-info p {
+  margin-bottom: 20px;
+}
+
+.user-posts-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 5px 30px;
+  padding: 5px;
+}
+
+.user-posts-container p:last-child {
+  text-align: end;
+}
+
+.see-all-posts {
+  text-align: center;
+}
+
+.post-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 5px 30px;
+  padding: 5px;
+}
+
+.post-comments {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 5px 30px 20px;
+  padding: 5px;
+}
+
+.create-btn {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.create-container {
+  display: flex;
+  justify-content: center;
+}
+
+.create-container form {
   display: flex;
   flex-direction: column;
 }
 
-.title_n_comments {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.notice {
+  text-align: center;
 }
 
-.title_n_comments p {
-  font-size: 12px;
+.alert {
+  text-align: center;
 }
 
-.comments_n_likes {
-  align-self: flex-end;
-  padding: 10px 0;
-  font-size: 12px;
-}
-
-.comment-box {
-  margin: -18px 0 20px 0;
-  padding-bottom: 0;
-}
-
-.each_comment {
-  padding-bottom: 10px;
-}
-
-.post_text {
-  margin: 10px 0;
-}
-
-.single-header {
-  padding-left: 20px;
+.button_to {
+  text-align: center;
 }
