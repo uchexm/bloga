@@ -1,44 +1,35 @@
-<ul class="ul-box">
-  <li class="user-details">
-    <div class="image-box">
-      <%= image_tag(@users.photo, class: "user-image") %>
+<div>
+  <h1>Details of user: <%= @user.name%></h1>
+  <a href="../../" class="home-button">Home</a>
+  <div class="user-container">
+    <img src= "<%=@user.photo%>" alt="Profile Picture"/>
+    <div class="user-info">
+      <h2><%=@user.name%></h2>
+      <p class="number-of-posts">Number of posts: <%= @user.posts_counter%></p>
     </div>
-    <div class="info-box">
-      <h2><%= @users.name %></h2>
-      <p>Number of posts: <%= @users.post_count %></p>
+  </div>
+  <div class="create-btn">
+    <button><%= link_to 'Create post', new_user_post_path(user_id: @user.id) %></button>
+  </div>
+  <div class="user-bio-container">
+    <div class="user-bio-info">
+      <h3>Bio</h3>
+      <p><%= @user.bio%></p>
     </div>
-  </li>
-  <li class="li-box">
-    <div class="inner-li-box">
-      <h2>Bio</h2>
-      <p class="p_tags"> <%= @users.bio %> </p>
-    </div>
-  </li>
-  <li>
-    <h2 class="single-header">Posts</h2>
-    <% if @users.last_three_posts.blank? %>
-      <div class="li-box">
-        <p class="p_tags inner-li-box">There are no posts available.</p>
+  </div>
+  <div>
+    <% @user.recent_posts.each do |post|%>
+      <div class="user-posts-container">
+        <p>Post #<%= post.id%>: <%= link_to "#{post.title}", "./#{@user.id}/posts/#{post.id}" %></p>
+        <p><%= post.text[0...100]%>...</p>
+        <div>
+          <p>Comments: <%= post.comments_counter || 0%>, Likes <%= post.likes_counter || 0%></p >
+        </div>
       </div>
-    <% else %>
-      <ul class="posts-box">
-        <% @users.last_three_posts.each do |post| %>
-        <a href="<%= url_for("/users/#{@users.id}/posts/#{post.id}") %>" >
-          <li class="li-box">
-            <div class="inner-li-box">
-              <h3>Post #<%= post.id %></h3>
-              <p class="p_tags"><%= post.body %></p>
-              <div class="comments_n_likes">
-                <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-      </a>
-      <div class="button_div">
-        <a href="<%= url_for(user_posts_path(@users)) %>" class="button">See all posts</a>
-      </div>
-    <% end %>
-  </li>
-</ul>
+    <%end%>
+  </div>
+
+  <form action="./<%= @user.id%>/posts" method="get" class="see-all-posts">
+    <button type="submit">See all posts</button>
+  </form>
+</div>

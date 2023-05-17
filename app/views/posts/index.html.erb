@@ -1,43 +1,34 @@
-<ul class="ul-box">
-  <li class="user-details">
-    <div class="image-box">
-      <%= image_tag(@user.photo, class: "user-image") %>
+<div>
+  <h1>This is all posts</h1>
+  <a href="../../" class="home-button">Home</a>
+  <div class="user-container">
+    <img src= "<%=@user.photo%>" alt="Profile Picture"/>
+    <div class="user-info">
+      <h2><%=@user.name%></h2>
+      <p class="number-of-posts">Number of posts: <%= @user.posts_counter%></p>
     </div>
-    <div class="info-box">
-      <h2><%= @user.name %></h2>
-      <p>Number of posts: <%= @user.post_count %></p>
+  </div>
+  <div>
+    <% @posts.each do |post| %>
+    <div class="user-posts-container">
+      <p>Post #<%= post.id %>: <%= link_to "#{post.title}", "#{user_posts_path}/#{post.id}" %></p>
+      <p><%= post.text[0...100] %>...</p>
+      <div>
+        <p>Comments: <%= post.comments_counter || 0 %>, Likes <%= post.likes_counter || 0 %></p>
+      </div>
     </div>
-  </li>
-
-  <li>
-    <ul class="posts-box">
-      <% @user.posts.each do |post| %>
-        <li class="li-box">
-          <div class="inner-li-box">
-            <a href=<%= "/users/#{@user.id}/posts/#{post.id}" %> >
-              <h3>Post #<%= post.id %> </h3>
-              <p class="p_tags"><%= post.body %></p>
-              <div class="comments_n_likes">
-                <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
-              </div>
-            </a>
+    <div class="post-comments">
+      <p>Comments:</p>
+      <% if post.comments.any? %>
+        <% post.comments.each do |comment| %>
+          <div>
+            <p><%= User.find_by(id: comment.author_id).name %>: <%= comment.text[0...100] %>...</p>
           </div>
-        </li>
-        <li class="li-box comment-box">
-          <div class="inner-li-box">
-            <% if post.last_five_comments.blank? %>
-              <p class="each_comment">No comments available.</p>
-            <% else %>
-              <% post.last_five_comments.each do |comment| %>
-                <p class="each_comment">
-                  <strong><%= comment.author.name %>:</strong>
-                  <%= comment.body %>
-                </p>
-              <% end %>
-            <% end %>
-          </div>
-        </li>
+        <% end %>
+      <% else %>
+        <p>No comments added yet.</p>
       <% end %>
-    </ul>
-  </li>
-</ul>
+    </div>
+  <% end %>
+  </div>
+</div>
