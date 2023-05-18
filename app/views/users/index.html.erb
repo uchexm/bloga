@@ -1,21 +1,17 @@
-<% if @users.blank? %>
-  <div class="li-box">
-    <p class="p_tags inner-li-box">There are no users available.</p>
-  </div>
-<% else %>
-  <ul class="ul-box">
-    <% @users.each do |user| %>
-    <a href="<%= url_for(user_path(user)) %>" >
-      <li class="user-details">
-        <div class="image-box">
-            <%= image_tag(user.photo, class: "user-image") %>
-        </div>
-        <div class="info-box">
-            <h2><%= user.name %></h2>
-            <p>Number of posts: <%= user.post_count %></p>
-        </div>
-      </li>
-      </a>
+<h1> List of Users </h1>
+<section class="w-100 align-items-center" >
+    <% @users.each do |user| %>        
+          <%= link_to user_path(user) do %>
+            <div class="d-flex align-items-center m-3 gap-5 text-decoration-none text-dark">
+              <%= image_tag(user.photo, class: "border border-dark p-5 border-3")%>
+              <div class="border border-dark border-3 w-100  p-3">
+                <h2 class="flex-grow-1 text-decoration-none"> <%= user.name %></h2>
+                <div class="d-flex justify-content-end">
+                  Number of posts:
+                  <%= user.posts_counter || 0 %>
+                </div>
+              </div>
+            </div> 
+          <% end %>
     <% end %>
-  </ul>
-<% end %>
+</section>

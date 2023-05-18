@@ -1,43 +1,54 @@
-<ul class="ul-box">
-  <li class="user-details">
-    <div class="image-box">
-      <%= image_tag(@user.photo, class: "user-image") %>
+<h1>List of Posts for a given spesfic User</h1>
+<div class="d-flex align-items-center mb-3 gap-3 w-100">
+  <div>
+    <img src="<%= @user.photo %>" alt="user photo" class= "border border-dark border-5 p-5">
+  </div>
+  <div class=" border border-dark border-5 w-100 p-3">
+    <h2 class="flex-grow-1 p-2"> <%= @user.name %></h2>
+    <div class="d-flex justify-content-end">
+      <p>Number of posts: <%= @user.posts_counter %></p>
     </div>
-    <div class="info-box">
-      <h2><%= @user.name %></h2>
-      <p>Number of posts: <%= @user.post_count %></p>
-    </div>
-  </li>
+  </div>
+</div>
 
-  <li>
-    <ul class="posts-box">
-      <% @user.posts.each do |post| %>
-        <li class="li-box">
-          <div class="inner-li-box">
-            <a href=<%= "/users/#{@user.id}/posts/#{post.id}" %> >
-              <h3><%= post.title %></h3>
-              <p class="p_tags"><%= post.body %></p>
-              <div class="comments_n_likes">
-                <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
-              </div>
-            </a>
-          </div>
-        </li>
-        <li class="li-box comment-box">
-          <div class="inner-li-box">
-            <% if post.last_five_comments.blank? %>
-              <p class="each_comment">No comments available.</p>
-            <% else %>
-              <% post.last_five_comments.each do |comment| %>
-                <p class="each_comment">
-                  <strong><%= comment.author.name %>:</strong>
-                  <%= comment.body %>
-                </p>
-              <% end %>
-            <% end %>
-          </div>
-        </li>
+<div>
+  <% @user.most_recent_posts.each do |post| %>
+    <div class="border border-dark border-3 mx-auto w-100 p-3 mb-3 text-dark">
+      <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
+      <p><%= post.text %></p>
+
+      <div class="d-flex justify-content-between">
+        <div>
+          <%= form_with model: @like, url: user_post_likes_path(post_id: post.id) do |form| %>
+            <%= form.submit "Like", class: "btn btn-outline-secondary"%>
+          <% end %>
+        </div>
+
+        <div>
+          <span>Comments: <%= "#{post.comments_counter || 0 }"%></span>
+          <span>, Likes: <%= "#{post.likes_counter || 0 }"%></span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="border border-dark border-3 mx-auto w-100 p-3 mb-3">
+      <h4 class="mb-3">Comments</h4>
+      <% post.most_recent_comments.each do |comment| %>
+        <div class="mb-3">
+          <span><%= comment.author.name %>:</span>
+          <span> <%= comment.text %></span>
+        </div>  
       <% end %>
-    </ul>
-  </li>
-</ul>
+    </div>
+
+  <% end %>
+</div>
+
+<div class="text-center mb-3">
+  <%= link_to "Create new post", new_user_post_path, class: "btn btn-outline-secondary" %>
+</div>
+
+<div class="d-flex align-items-center justify-content-center p-3 pagination">
+  <%= will_paginate @posts %> 
+</div>

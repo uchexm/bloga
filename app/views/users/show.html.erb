@@ -1,47 +1,36 @@
-<ul class="ul-box">
-  <li class="user-details">
-    <div class="image-box">
-      <%= image_tag(@users.photo, class: "user-image") %>
+<h1> Single User Page</h1>
+<div class="d-flex align-items-center mb-3 gap-3 w-100">
+  <div>
+    <img src="<%= @user.photo %>" alt="user photo" class= "border border-dark border-5 p-5">
+  </div>
+  <div class=" border border-dark border-5 w-100 p-3">
+    <h2 class="flex-grow-1 p-2"> <%= @user.name %></h2>
+    <div class="d-flex justify-content-end">
+      <p>Number of posts: <%= @user.posts_counter %></p>
     </div>
-    <div class="info-box">
-      <h2><%= @users.name %></h2>
-      <p>Number of posts: <%= @users.post_count %></p>
-    </div>
-  </li>
-  <li class="li-box">
-    <div class="inner-li-box">
-      <h2>Bio</h2>
-      <p class="p_tags"> <%= @users.bio %> </p>
-    </div>
-  </li>
-  <li>
-    <h2 class="single-header">Posts</h2>
-    <% if @users.last_three_posts.blank? %>
-      <div class="li-box">
-        <p class="p_tags inner-li-box">There are no posts available.</p>
+  </div>
+</div>
+
+<div class="border border-dark border-5 mx-auto w-100 p-3 mb-3">
+  <h2>Biography</h2>
+  <p><%= @user.bio %></p>
+</div>
+
+<div>
+  <% @user.most_recent_posts.each do |post| %>
+    <div class="border border-dark border-5 mx-auto w-100 p-3 mb-3">
+      <h2>Post #<%= post.id %></h2>
+      <p><%= post.text %></p>
+
+      <div class="d-flex justify-content-end">
+        <span>Comments: <%= "#{post.comments_counter || 0 } "%></span>
+        <span>, Likes: <%= "#{ post.likes_counter || 0 }"%></span>
       </div>
-    <% else %>
-      <ul class="posts-box">
-        <% @users.last_three_posts.each do |post| %>
-        <a href="<%= url_for("/users/#{@users.id}/posts/#{post.id}") %>" >
-          <li class="li-box">
-            <div class="inner-li-box">
-              <h3>Post Title: <%= post.title %></h3>
-              <p class="p_tags"><%= post.body %></p>
-              <div class="comments_n_likes">
-                <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-      </a>
-      <div class="button_div">
-        <a href="<%= url_for(user_posts_path(@users)) %>" class="button">See all posts</a>
-      </div>
-    <% end %>
-  </li>
-  <li class="li-box">
-        <a href="<%= url_for("/users/#{@users.id}/posts/new") %>" class="button button-wide">Create new post</a>
-    </li>
-</ul>
+    </div>
+  <% end %> 
+  <div class="text-center mb-3">
+    <a href=<%=user_posts_path(@user)%> class="btn btn-primary btn-outline-secondary text-dark">
+    See All Posts
+  </a>
+  </div>
+</div>
