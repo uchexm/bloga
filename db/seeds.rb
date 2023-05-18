@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 User.destroy_all
-Post.destroy_all 
+Post.destroy_all
 Comment.destroy_all
 Like.destroy_all
 
@@ -23,12 +23,12 @@ sixth_post = Post.create(author: second_user, title: 'Bye', text: 'This is my th
 seventh_post = Post.create(author: first_user, title: 'See you later', text: 'This is my fourth post from Tom')
 eighth_post = Post.create(author: second_user, title: 'See you soon', text: 'This is my fourth post from Lilly')
 
-Comment.create(post: first_post, author: second_user, text: 'Hi Tom!' )
-Comment.create(post: second_post, author: first_user, text: 'Hi Lilly!' )
-Comment.create(post: third_post, author: second_user, text: 'How are you Tom?' )
-Comment.create(post: fourth_post, author: first_user, text: 'I am fine Lilly!' )
-Comment.create(post:fifth_post, author: first_user, text: 'Okay, Goodbye!')
-Comment.create(post:sixth_post, author:second_user, text: 'Bye')
+Comment.create(post: first_post, author: second_user, text: 'Hi Tom!')
+Comment.create(post: second_post, author: first_user, text: 'Hi Lilly!')
+Comment.create(post: third_post, author: second_user, text: 'How are you Tom?')
+Comment.create(post: fourth_post, author: first_user, text: 'I am fine Lilly!')
+Comment.create(post: fifth_post, author: first_user, text: 'Okay, Goodbye!')
+Comment.create(post: sixth_post, author: second_user, text: 'Bye')
 
 Like.create(post: first_post, author: second_user)
 Like.create(post: second_post, author: first_user)

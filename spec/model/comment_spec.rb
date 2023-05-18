@@ -6,14 +6,14 @@ RSpec.describe Comment, type: :model do
   subject do
     Comment.new(
       author: user,
-      post:,
-      text: 'Hello'
+      text: 'Hello',
+      post: post # Assign the associated post to the comment
     )
   end
 
   before { subject.save }
 
-  it 'update post comments_counter' do
+  it 'updates post comments_counter' do
     expect(subject.post.comments_counter).to eq(1)
   end
 end
