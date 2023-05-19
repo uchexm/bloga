@@ -13,3 +13,133 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.ul-box {
+  width: 80%;
+  padding: 20px 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  margin-bottom: 2rem;
+  background-color: #8ECAE6;
+}
+.user-details {
+  display: flex;
+  column-gap: 20px;
+  padding: 20px 20px;
+}
+.user-details:nth-child(even) {
+  background-color: #8ECAE6;
+}
+.image-box {
+  height: 100px;
+  width: 100px;
+  background: #219EBC;
+}
+.user-image {
+  height: 100%;
+}
+.info-box {
+  width: 70%;
+  border: 2px solid #023047;
+  padding: 10px;
+}
+.info-box p {
+  margin-top: 20px;
+  float: right;
+}
+.li-box {
+  padding: 0 20px;
+}
+.inner-li-box {
+  border: 2px solid #023047;
+  padding: 10px 20px;
+}
+.posts-box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  margin: 10px 0;
+}
+.button_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #219EBC;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+.button-wide {
+  width: 100%;
+  display: block;
+  margin-bottom: 50px;
+}
+.form-head {
+  padding-bottom: 20px;
+}
+.form-input {
+  width: 50%;
+  height: 40px;
+  margin-bottom: 20px;
+}
+.form-text-area {
+  width: 100%;
+  height: 100px;
+}
+.form-button {
+  background-color: #148CFC;
+  margin-top: 10px;
+}
+.like-button {
+  padding: 5px 10px;
+}
+.p_tags {
+  margin-top: 10px;
+}
+.inner-li-box a {
+  display: flex;
+  flex-direction: column;
+}
+.title_n_comments {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title_n_comments p {
+  font-size: 12px;
+}
+.comments_n_likes {
+  align-self: flex-end;
+  padding: 10px 0;
+  font-size: 12px;
+}
+.comment-box {
+  margin: -18px 0 20px 0;
+  padding-bottom: 0;
+}
+.each_comment {
+  padding-bottom: 10px;
+}
+.post_text {
+  margin: 10px 0;
+}
+.single-header {
+  padding-left: 20px;
+}
