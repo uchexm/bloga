@@ -7,28 +7,60 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 User.destroy_all
-Post.destroy_all
+Post.destroy_all 
 Comment.destroy_all
 Like.destroy_all
 
-first_user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
-second_user = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.')
+author1 = User.create!(
+  name: "Tom",
+  photo: "https://picsum.photos/200/300",
+  bio: "This is author 1 bio",
+  email: "author1@gmail.com",
+  password: "author1"
+)
 
-first_post = Post.create(author: first_user, title: 'Hello', text: 'This is my first post from Tom')
-second_post = Post.create(author: second_user, title: 'Hi', text: 'This is my first post from Lilly')
-third_post = Post.create(author: first_user, title: 'How are you?', text: 'This is my second post from Tom')
-fourth_post = Post.create(author: second_user, title: 'I am fine', text: 'This is my second post from Lilly')
-fifth_post = Post.create(author: first_user, title: 'Goodbye', text: 'This is my third post from Tom')
-sixth_post = Post.create(author: second_user, title: 'Bye', text: 'This is my third post from Lilly')
-seventh_post = Post.create(author: first_user, title: 'See you later', text: 'This is my fourth post from Tom')
-eighth_post = Post.create(author: second_user, title: 'See you soon', text: 'This is my fourth post from Lilly')
+author2 = User.create!(
+  name: "Tekhlay",
+  photo: "https://picsum.photos/200/300",
+  bio: "This is author 2 bio",
+  email: "author2@gmail.com",
+  password: "author2"
+)
 
-Comment.create(post: first_post, author: second_user, text: 'Hi Tom!')
-Comment.create(post: second_post, author: first_user, text: 'Hi Lilly!')
-Comment.create(post: third_post, author: second_user, text: 'How are you Tom?')
-Comment.create(post: fourth_post, author: first_user, text: 'I am fine Lilly!')
-Comment.create(post: fifth_post, author: first_user, text: 'Okay, Goodbye!')
-Comment.create(post: sixth_post, author: second_user, text: 'Bye')
+post1 = Post.create!(
+  author: author1,
+  title: "Post 1",
+  text: "This is post 1 body",
+  comments_counter: 0,
+  likes_counter: 0,
+)
 
-Like.create(post: first_post, author: second_user)
-Like.create(post: second_post, author: first_user)
+post2 = Post.create!(
+  author: author2,
+  title: "Post 2",
+  text: "This is post 2 body",
+  comments_counter: 0,
+  likes_counter: 0,
+)
+
+comment1 = Comment.create!(
+  author: author1,
+  post: post1,
+  text: "This is comment 1"
+)
+
+comment2 = Comment.create!(
+  author: author2,
+  post: post2,
+  text: "This is comment 2"
+)
+
+like1 = Like.create!(
+  author: author1,
+  post: post1
+)
+
+like2 = Like.create!(
+  author: author2,
+  post: post2
+)
