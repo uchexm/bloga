@@ -1,37 +1,33 @@
-<ul class="ul-box">
-  <li>
-    <ul class="posts-box">
-      <li class="li-box">
-        <div class="inner-li-box">
-          <div class="title_n_comments">
-            <h4><%= @post.title %> by <%= @user.name %></h4>
-            <p>Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
-          </div>
-          <p class="p_tags post_text"><%= @post.body %></p>
-          <div>
-            <%= form_with model: @like, url: user_post_likes_path(@user, @post) do |form|%>
-                <%= form.submit 'Like post', class: 'button like-button' %>
-            <%end%>
-          </div>
+<section>
+  <div class="border border-dark border-3 mx-auto w-100 p-3 mb-3">
+    <div class="d-flex justify-content-between align-items-center p3">
+      <h2>
+      Post #<%= @post.id %> by <%= @user.name %>
+      </h2>
+      <div>
+        <span>Comments: <%= @post.comments_counter %></span>
+        <span>, Likes: <%= @post.likes_counter %></span>
+      </div>
+    </div>
+
+    <div>
+      <p> <%= @post.text %></p>
+    </div>
+  </div>
+
+  <div class="border border-dark border-3 mx-auto w-100 p-3 mb-3">
+     <% @post.most_recent_comments.each do |comment| %>
+      <%= "#{comment.author.name}: #{comment.text}"%>
+     <% end %>
+  </div>
+
+  <div>
+     <h3>Add a comment: </h3>
+       <%= form_with model: @comment, url: user_post_comments_path(post_id: @post) do |form| %>
+        <div>
+          <%= form.text_area :text, placeholder: "Write new comment...", class: "form-control"%>
         </div>
-      </li>
-      <li class="li-box comment-box">
-        <div class="inner-li-box">
-          <% if @post.comments.blank? %>
-            <p class="each_comment post_show_comment">No comments available.</p>
-          <% else %>
-            <% @post.comments.each do |comment| %>
-              <p class="each_comment post_show_comment">
-                <strong><%= comment.author.name %>:</strong>
-                <%= comment.body %>
-              </p>
-            <% end %>
-          <% end %>
-        </div>
-      </li>      
-    </ul>
-  </li>
-  <li class="li-box">
-    <a href="<%= url_for(new_user_post_comment_path(@user, @post)) %>" class="button button-wide">Add Comment</a>
-  </li>
-</ul>
+        <%= form.submit "Add Comment", class: "btn btn-outline-secondary m-2" %>
+      <% end %>
+    </div>
+</section>

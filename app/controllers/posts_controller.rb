@@ -1,12 +1,15 @@
 class PostsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
-    @posts = Post.all
+    @user = User.find_by(id: params[:user_id])
+    # @user = User.includes(:posts, :comments).find(params[:user_id])
+    @posts = @user.posts.includes(:comments).paginate(page: params[:page], per_page: 2)
   end
 
   def show
-    @post = Post.find(params[:id])
     @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:id])
+    @comment = Comment.new
+    @like = Like.new
   end
 
   def new
@@ -14,19 +17,18 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new(post_params)
-    if @post.save
-      flash[:success] = 'Post created successfully'
-      redirect_to "/users/#{current_user.id}/posts"
-    else
-      flash[:danger] = "Couldn't create post"
-      render :new, status: :unprocessable_entity
-    end
+    @user = User.find(params[:user_id])
+    @post = @user.posts.new(post_params)
+    @post.likes_counter = 0
+    @post.comments_counter = 0
+    return unless @post.save
+
+    redirect_to user_posts_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :text)
   end
 end

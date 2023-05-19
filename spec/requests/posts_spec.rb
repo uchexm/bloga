@@ -1,28 +1,48 @@
 require 'rails_helper'
 
-RSpec.describe 'Posts controller:', type: :request do
-  describe 'GET all posts for an user' do
-    let(:user) { User.create!(name: 'Test User', post_count: 0) }
+RSpec.describe 'Posts', type: :request do
+  let!(:user) { User.create(name: 'Tekhlay', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Ethiopia.') }
+  let!(:post) { Post.create(author: user, title: 'My First Post', text: 'Lorem ipsum') }
 
-    it 'returns a successful response' do
-      get "/users/#{user.id}/posts"
+  describe 'GET /posts' do
+    before :each do
+      get user_posts_path(user_id: user.id)
+    end
+    it 'returns http success' do
+      expect(response).to have_http_status(:success)
+    end
 
-      expect(response).to be_successful
-      expect(response.body).to include('<h1>Here is a list of posts for a given user</h1>')
+    it 'renders template correctly' do
       expect(response).to render_template(:index)
+    end
+
+    it 'does not render a different template' do
+      expect(response).to_not render_template(:show)
+    end
+
+    it 'shows the correct placeholder text' do
+      expect(response.body).to include(user.name)
     end
   end
 
-  describe 'GET specific post for a user' do
-    let(:user) { User.create!(name: 'Test User', post_count: 0) }
+  describe 'GET /posts/:id' do
+    before :each do
+      get user_posts_path(user.id, post.id)
+    end
+    it 'returns http success' do
+      expect(response).to have_http_status(:success)
+    end
 
-    it 'returns a successful response' do
-      post = Post.create!(title: 'Test Post', author_id: user.id, comments_counter: 0, likes_counter: 0)
-      get "/users/#{user.id}/posts/#{post.id}"
+    it 'renders template correctly' do
+      expect(response).to render_template(:index)
+    end
 
-      expect(response).to be_successful
-      expect(response.body).to include('<h1>This is a single post</h1>')
-      expect(response).to render_template(:show)
+    it 'does not render a different template' do
+      expect(response).to_not render_template(:show)
+    end
+
+    it 'shows the correct placeholder text' do
+      expect(response.body).to include(user.name)
     end
   end
 end
